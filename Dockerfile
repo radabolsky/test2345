@@ -1,24 +1,9 @@
-FROM python:3.8-slim
-
-WORKDIR back
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-      bzip2 \
-      g++ \
-      git \
-      graphviz \
-      libgl1-mesa-glx \
-      libhdf5-dev \
-      openmpi-bin \
-      wget \
-      python3-tk &&\
-      rm -rf /var/lib/apt/lists/*
-
+FROM python:3.7
+EXPOSE 8501
+WORKDIR /medical
+COPY requirements.txt ./requirements.txt
+RUN pip3 install -r requirements.txt
+RUN apt-get update
+RUN apt-get install ffmpeg libsm6 libxext6  -y
 COPY . .
-
-RUN pip install --no-cache-dir -r requirements.txt
-
-RUN (apt-get autoremove -y; \
-     apt-get autoclean -y)
-
-CMD ["python", "app.py"]
+CMD streamlit run main.py
