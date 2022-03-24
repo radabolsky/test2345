@@ -330,12 +330,12 @@ kernel3 = np.ones((1,1), np.uint8)
 
 er2 = cv2.erode(er, kernel3)
 
-dil = cv2.dilate(er2, kernel3)
-
-cv2_imshow(dil)
-
-cv2_imshow(contrast_img)
-
-cv2.gradient
-
-print()
+# dil = cv2.dilate(er2, kernel3)
+#
+# cv2_imshow(dil)
+#
+# cv2_imshow(contrast_img)
+#
+# cv2.gradient
+#
+# print()
